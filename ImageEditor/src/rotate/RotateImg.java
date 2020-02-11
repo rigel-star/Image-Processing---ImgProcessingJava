@@ -25,9 +25,6 @@ public class RotateImg {
 		if(degree == 90) {
 			rotate90();
 		}
-		if(degree == -90) {
-			rotateNegative90();
-		}
 		
 	}
 	
@@ -58,16 +55,14 @@ public class RotateImg {
 		int w = img.getWidth();
 		int h = img.getHeight();
 		
-		for(int y=0;y>h;y++) {
-			for(int x=0;x>w;x++) {
-				out.setRGB(x, h-1-y, img.getRGB(x, y));
-			}
-
-		}
-	}
-	
-	private void rotateNegative90(){
-		
+		for(int y=0; y<h;y++) 
+        { 
+            for(int lx=0, rx=w-1; lx<w; lx++, rx--) {   
+                int p = img.getRGB(lx, y); 
+  
+                out.setRGB(rx, y, p); 
+            } 
+        } 
 	}
 	
 	public BufferedImage getRotatedImg() {	
